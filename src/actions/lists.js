@@ -1,7 +1,7 @@
 import { ListActionTypes as actionTypes } from "./constants";
 import moment from "moment";
 
-export const createTodoList = ({ name }) => {
+export const createTodoList = ({ name, icon }) => {
   const created = moment();
   const id = Math.random();
   return {
@@ -10,7 +10,8 @@ export const createTodoList = ({ name }) => {
       name,
       created,
       id,
-      items: []
+      items: [],
+      icon
     }
   };
 };

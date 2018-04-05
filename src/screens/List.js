@@ -69,7 +69,7 @@ class TodoList extends Component {
                   : null
               }
             >
-              {moment(item.created).format("dddd, MMMM Do, YYYY h:mm:ss A")}
+              {moment(item.created).format("MMMM Do, h:mm:ss A")}
             </Text>
           </View>
         )}

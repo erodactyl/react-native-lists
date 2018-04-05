@@ -7,8 +7,8 @@ import { createTodoList } from "../actions/lists";
 const mapDispatchToProps = { createTodoList };
 
 class NewList extends Component {
-  submit = name => {
-    const { id } = this.props.createTodoList({ name }).payload;
+  submit = (name, icon) => {
+    const { id } = this.props.createTodoList({ name, icon }).payload;
     this.props.navigation.navigate("List", { listId: id, title: name });
   };
   onCancel = () => {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, TextInput } from "react-native";
 import moment from "moment";
-import { Ionicons } from "react-native-vector-icons";
+import Icon from "react-native-vector-icons/Ionicons";
 import Swipeout from "react-native-swipeout";
 import { connect } from "react-redux";
 import { createTodoList, deleteTodoList } from "../actions/lists";
@@ -46,10 +46,9 @@ class Home extends Component {
               justifyContent: "space-between"
             }}
           >
+            {item.icon !== null && <Icon name={item.icon} size={32} />}
             <Text style={{ color: "black" }}>{item.name}</Text>
-            <Text>
-              {moment(item.created).format("dddd, MMMM Do, YYYY h:mm:ss A")}
-            </Text>
+            <Text>{moment(item.created).format("MMMM Do, h:mm:ss A")}</Text>
           </View>
         )}
         addItem={this.addItem}

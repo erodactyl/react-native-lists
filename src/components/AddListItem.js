@@ -1,10 +1,24 @@
 import React, { Component } from "react";
 import { View, TextInput, Keyboard, Text } from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
 import { Button } from "native-base";
+
+const iconNames = [
+  "md-game-controller-b",
+  "md-git-branch",
+  "md-globe",
+  "md-glasses",
+  "logo-github",
+  "logo-dropbox",
+  "logo-facebook",
+  "logo-euro",
+  "md-code"
+];
 
 export default class AddListItem extends Component {
   state = {
-    value: ""
+    value: "",
+    icon: null
   };
   onChangeText = value => {
     this.setState({ value });
@@ -12,8 +26,11 @@ export default class AddListItem extends Component {
   onDone = () => {
     Keyboard.dismiss();
     if (this.state.value !== "") {
-      this.props.submit(this.state.value);
+      this.props.submit(this.state.value, this.state.icon);
     }
+  };
+  select = name => {
+    this.setState({ icon: name });
   };
   render() {
     return (
@@ -55,6 +72,21 @@ export default class AddListItem extends Component {
           >
             <Text>Done</Text>
           </Button>
+        </View>
+        <View style={{ flexDirection: "row" }}>
+          {iconNames.map(iconName => (
+            <Icon
+              key={iconName}
+              style={
+                this.state.icon === iconName
+                  ? { color: "blue", margin: 10 }
+                  : { margin: 10 }
+              }
+              name={iconName}
+              size={32}
+              onPress={() => this.select(iconName)}
+            />
+          ))}
         </View>
       </View>
     );
