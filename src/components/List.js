@@ -13,8 +13,8 @@ export default class ItemList extends Component {
     Keyboard.dismiss();
     if (this.state.value !== "") {
       this.props.submitNew(this.state.value);
-      this.setState({ hasNew: false, value: "" });
     }
+    this.setState({ hasNew: false, value: "" });
   };
   render() {
     return (

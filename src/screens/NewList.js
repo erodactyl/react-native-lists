@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Keyboard } from "react-native";
 import { AddListItem } from "../components";
 import { connect } from "react-redux";
 import { createTodoList } from "../actions/lists";
@@ -11,6 +12,7 @@ class NewList extends Component {
     this.props.navigation.navigate("List", { listId: id, title: name });
   };
   onCancel = () => {
+    Keyboard.dismiss();
     this.props.navigation.navigate("Home");
   };
   render() {
