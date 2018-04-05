@@ -27,6 +27,11 @@ export default class ItemList extends Component {
     }
     this.setState({ hasNew: false, value: "" });
   };
+  filterData = () => {
+    return autocompleteTodos.filter(item =>
+      item.toLowerCase().includes(this.state.value.toLowerCase())
+    );
+  };
   render() {
     return (
       <View style={{ flex: 1 }}>
@@ -69,7 +74,7 @@ export default class ItemList extends Component {
           this.props.addable && (
             <Autocomplete
               autoFocus
-              data={autocompleteTodos}
+              data={this.filterData()}
               value={this.state.value}
               onChangeText={value => this.setState({ value })}
               renderItem={item => (
