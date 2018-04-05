@@ -46,7 +46,7 @@ class Home extends Component {
               justifyContent: "space-between"
             }}
           >
-            {item.icon !== null && <Icon name={item.icon} size={32} />}
+            {item.icon !== null && <Icon name={item.icon} size={20} />}
             <Text style={{ color: "black" }}>{item.name}</Text>
             <Text>{moment(item.created).format("MMMM Do, h:mm:ss A")}</Text>
           </View>

@@ -1,8 +1,19 @@
 import React, { Component } from "react";
-import { View, TextInput, Keyboard } from "react-native";
+import { View, TextInput, Keyboard, TouchableOpacity } from "react-native";
 import { List, ListItem, Text, Fab } from "native-base";
+import Autocomplete from "react-native-autocomplete-input";
 import Icon from "react-native-vector-icons/Ionicons";
 import Swipeout from "react-native-swipeout";
+
+const autocompleteTodos = [
+  "Run",
+  "Ear",
+  "Choose",
+  "Ski",
+  "Bully",
+  "Swim",
+  "Drive"
+];
 
 export default class ItemList extends Component {
   state = {
@@ -56,11 +67,18 @@ export default class ItemList extends Component {
         </Fab>
         {this.state.hasNew &&
           this.props.addable && (
-            <TextInput
+            <Autocomplete
               autoFocus
-              style={{ backgroundColor: "#BDBDBD", height: 50 }}
+              data={autocompleteTodos}
               value={this.state.value}
               onChangeText={value => this.setState({ value })}
+              renderItem={item => (
+                <TouchableOpacity
+                  onPress={() => this.setState({ value: item })}
+                >
+                  <Text>{item}</Text>
+                </TouchableOpacity>
+              )}
               onSubmitEditing={this.addNew}
             />
           )}
