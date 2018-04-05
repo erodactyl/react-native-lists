@@ -1,0 +1,12 @@
+export const ListActionTypes = {
+  CREATE_TODO_LIST: "CREATE_TODO_LIST",
+  DELETE_TODO_LIST: "DELETE_TODO_LIST"
+};
+
+export const TodoActionTypes = {
+  DELETE_TODO: "DELETE_TODO",
+  CREATE_TODO: "CREATE_TODO",
+  TOGGLE_TODO_DONE: "TOGGLE_TODO_DONE"
+};
+
+export const INITIALIZE = "INITIALIZE";
