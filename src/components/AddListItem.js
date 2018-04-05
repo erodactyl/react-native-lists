@@ -11,7 +11,9 @@ export default class AddListItem extends Component {
   };
   onDone = () => {
     Keyboard.dismiss();
-    this.props.submit(this.state.value);
+    if (this.state.value !== "") {
+      this.props.submit(this.state.value);
+    }
   };
   render() {
     return (

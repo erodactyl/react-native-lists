@@ -11,8 +11,10 @@ export default class ItemList extends Component {
   };
   addNew = () => {
     Keyboard.dismiss();
-    this.props.submitNew(this.state.value);
-    this.setState({ hasNew: false, value: "" });
+    if (this.state.value !== "") {
+      this.props.submitNew(this.state.value);
+      this.setState({ hasNew: false, value: "" });
+    }
   };
   render() {
     return (
@@ -22,6 +24,7 @@ export default class ItemList extends Component {
             return (
               <Swipeout
                 key={item.id}
+                style={{ height: 50 }}
                 right={[
                   {
                     text: "Delete",
