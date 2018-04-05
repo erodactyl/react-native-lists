@@ -57,6 +57,7 @@ export default class ItemList extends Component {
         {this.state.hasNew &&
           this.props.addable && (
             <TextInput
+              autoFocus
               style={{ backgroundColor: "#BDBDBD", height: 50 }}
               value={this.state.value}
               onChangeText={value => this.setState({ value })}

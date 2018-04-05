@@ -19,6 +19,7 @@ export default class AddListItem extends Component {
     return (
       <View style={{ flex: 1 }}>
         <TextInput
+          autoFocus
           style={{ width: "100%", height: 50, backgroundColor: "#BDBDBD" }}
           value={this.state.value}
           onChangeText={this.onChangeText}
