@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { View, Text } from "react-native";
+import moment from "moment";
 import { List } from "../components";
 import { connect } from "react-redux";
 import { createTodo, deleteTodo, toggleTodo } from "../actions/todo";
@@ -43,14 +44,34 @@ class TodoList extends Component {
         items={list.items}
         deleteItem={this.deleteTodo}
         renderItem={item => (
-          <Text
+          <View
             style={{
-              textDecorationLine: item.done ? "line-through" : "none",
-              color: item.done ? "#9E9E9E" : "black"
+              flex: 1,
+              flexDirection: "row",
+              justifyContent: "space-between"
             }}
           >
-            {item.name}
-          </Text>
+            <Text
+              style={{
+                textDecorationLine: item.done ? "line-through" : "none",
+                color: item.done ? "#9E9E9E" : "black"
+              }}
+            >
+              {item.name}
+            </Text>
+            <Text
+              style={
+                item.done
+                  ? {
+                      textDecorationLine: "line-through",
+                      color: "#9E9E9E"
+                    }
+                  : null
+              }
+            >
+              {moment(item.created).format("dddd, MMMM Do, YYYY h:mm:ss A")}
+            </Text>
+          </View>
         )}
         addable
         submitNew={this.createTodo}

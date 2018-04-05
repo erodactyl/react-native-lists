@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, TextInput } from "react-native";
+import moment from "moment";
 import { Ionicons } from "react-native-vector-icons";
 import Swipeout from "react-native-swipeout";
 import { connect } from "react-redux";
@@ -37,7 +38,20 @@ class Home extends Component {
         items={this.props.lists}
         onItemPress={this.openList}
         deleteItem={this.deleteList}
-        renderItem={item => <Text>{item.name}</Text>}
+        renderItem={item => (
+          <View
+            style={{
+              flex: 1,
+              flexDirection: "row",
+              justifyContent: "space-between"
+            }}
+          >
+            <Text style={{ color: "black" }}>{item.name}</Text>
+            <Text>
+              {moment(item.created).format("dddd, MMMM Do, YYYY h:mm:ss A")}
+            </Text>
+          </View>
+        )}
         addItem={this.addItem}
       />
     );

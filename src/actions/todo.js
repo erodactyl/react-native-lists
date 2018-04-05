@@ -1,11 +1,13 @@
 import { TodoActionTypes as actionTypes } from "./constants";
+import moment from "moment";
 
 export const createTodo = ({ parentId, name }) => {
   const id = Math.random();
+  const created = moment();
   const done = false;
   return {
     type: actionTypes.CREATE_TODO,
-    payload: { parentId, name, id, done }
+    payload: { parentId, name, id, done, created }
   };
 };
 
